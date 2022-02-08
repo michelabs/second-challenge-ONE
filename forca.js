@@ -2,7 +2,7 @@ let tentativas = 6;
 let palavraSecretaSorteada;	
 let listaDinamica = [];
 
-const palavras = ["BRASIL", "ARGENTINA", "CHILE", "BOLIVIA", "VENEZUELA"];
+let palavras = ["BRASIL", "ARGENTINA", "CHILE", "BOLIVIA", "VENEZUELA"];
 
 // inicia o jogo sorteando uma palavra secreta
 iniciaJogo();
@@ -84,10 +84,22 @@ function compararListas(letra){
 	}
 }
 
+// método para inserir palavras
+adicionaPalavraNoArray();
+function adicionaPalavraNoArray(){
+	document.getElementById("nova-palavra").addEventListener("click", function(){	
+	identificaNovaPalavra();
+	});
+}
 
+// método para identifica nova palavra
 
-
-	
-
-
-
+function identificaNovaPalavra(){
+	var novaPalavra = document.getElementById("input-nova-palavra").value;
+	if(novaPalavra != ""){
+	palavras.push(novaPalavra);
+	console.log(novaPalavra);
+	console.log(palavras);
+	document.getElementById("input-nova-palavra").value = "";
+	}  else alert ("Digite uma palavra válida!");
+}
