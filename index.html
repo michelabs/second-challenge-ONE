@@ -1,30 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Jogo da Forca</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Diverte Fácil</title>
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <div style="text-align:center; margin: 50px 0px;">
-      <h1 class="titulo">Jogo da Forca</h1>
-      <button class="btn" id="iniciar-jogo">INICIAR JOGO</button>
+    <div style="text-align:center; margin: 10px 0px;">
+      <h1 class="titulo">JOGO DA FORCA</h1>
+      <button class="btn" id="iniciar-jogo">Iniciar Jogo</button>
     </div>
     <div style="text-align:center">
       <input class="text-input" type="text" id="input-nova-palavra" placeholder="Escreva uma nova palavra">
-      <button class="btn" id="nova-palavra">ADICIONAR PALAVRA</button> 
+      <button class="btn" id="nova-palavra">Adicionar Palavra</button> 
     </div>
     <div class="container" style="text-align:center; margin: 50px 0px;">
 	<div id="palavra-secreta">
-            <!-- <div class="letras">A</div>
-            <div class="letras">F</div>
-            <div class="letras">G</div>
-            <div class="letras">A</div>
-            <div class="letras">S</div>
-            <div class="letras">M</div> -->
-        </div>		
+    </div>		
 	<div id="teclado">
 	<div class="teclas" style="text-align:center; margin: 50px 0px;">
 		<button id="letra-Q" onclick="verificarLetraEscolhida('Q')">Q</button>
@@ -32,7 +26,7 @@
 		<button id="letra-E" onclick="verificarLetraEscolhida('E')">E</button>
 		<button id="letra-R" onclick="verificarLetraEscolhida('R')">R</button>
 		<button id="letra-T" onclick="verificarLetraEscolhida('T')">T</button>
-		<button id="letra-Y"onclick="verificarLetraEscolhida('Y')">Y</button>
+		<button id="letra-Y" onclick="verificarLetraEscolhida('Y')">Y</button>
 		<button id="letra-U" onclick="verificarLetraEscolhida('U')">U</button>
 		<button id="letra-I" onclick="verificarLetraEscolhida('I')">I</button>
 		<button id="letra-O" onclick="verificarLetraEscolhida('O')">O</button>
@@ -58,8 +52,17 @@
 		<button id="letra-M" onclick="verificarLetraEscolhida('M')">M</button>	
 	</div>				
     <div style="text-align:center;">
-    <canvas id="forca" height="500px" width="1200px"></canvas>
+    <canvas id="forca" height="300px" width="1200px"></canvas>
     </div>
+	<footer class="footer">
+		<div class="main" style="text-align:center">
+			<div class="content">
+			  <p className="text-light">App desenvolvido por <a href="https://github.com/michelabs" target="_blank" rel="noreferrer">Michel Silva</a></p>
+			  <p className="text-light">Contato via <a href="https://linkedin.com/in/michelabs" target="_blank" rel="noreferrer"> Linkedin </a></p>
+			  <p className="text-light">Second Challenge Oracle ONE<br/></p>
+			</div>
+		  </div>
+	  </footer>     
     
     <!-- <script type="text/javascript" src="canvas.js"></script> -->
     <script type="text/javascript" src="forca.js"></script>
