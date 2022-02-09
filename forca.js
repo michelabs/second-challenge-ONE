@@ -179,12 +179,12 @@ function desenhaCabecaComX(){
 }
 
 function mensagemDerrota(){
-	alert ("VOCÊ PERDEU, TENTE NOVAMENTE")
+	alert ("VOCÊ PERDEU, TENTE NOVAMENTE! A PALAVRA CORRETA ERA: " + this.palavraSecretaSorteada);
 	location.reload();	
 }
 
 function mensagemVitoria(){
-	alert ("VOCÊ GANHOU! PARABÉNS")
+	alert ("VOCÊ GANHOU! PARABÉNS! A PALAVRA CORRETA ERA: " + this.palavraSecretaSorteada);
 	location.reload();	
 	
 }
