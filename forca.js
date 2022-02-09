@@ -1,4 +1,4 @@
-let tentativas = 6;
+let tentativas = 7;
 let palavraSecretaSorteada;	
 let listaDinamica = [];
 
@@ -60,9 +60,10 @@ function compararListas(letra){
 	console.log(this.palavraSecretaSorteada.length);
 		if(posicao < 0){
 			tentativas--;
-			if(tentativas == 0) {
-				alert ("Você perdeu! a palavra correta era: " + this.palavraSecretaSorteada)
-				location.reload();
+			console.log(tentativas);
+			desenhaCorpo(tentativas);
+			if(tentativas == 0) {								
+				
 			}
 		} else {
 			for (i = 0; i < this.palavraSecretaSorteada.length; i++) {	
@@ -71,6 +72,7 @@ function compararListas(letra){
 				}
 			}
 		}
+
 	let vitoria = true;
 	for (i = 0; i < this.palavraSecretaSorteada.length; i++){
 		if (this.palavraSecretaSorteada[i] != listaDinamica[i]){
@@ -79,7 +81,7 @@ function compararListas(letra){
 	}
 
 	if (vitoria == true){
-	 alert ("Você ganhou! A palavra correta era: " + this.palavraSecretaSorteada);
+		mensagemVitoria()
 	 location.reload();	
 	}
 }
@@ -93,7 +95,6 @@ function adicionaPalavraNoArray(){
 }
 
 // método para identifica nova palavra
-
 function identificaNovaPalavra(){
 	var novaPalavra = document.getElementById("input-nova-palavra").value;
 	if(novaPalavra != ""){
@@ -103,3 +104,88 @@ function identificaNovaPalavra(){
 	document.getElementById("input-nova-palavra").value = "";
 	}  else alert ("Digite uma palavra válida!");
 }
+
+function desenhaCorpo(tentativas){
+	switch(tentativas){
+		case 6:
+			desenhaCabeca();
+			desenhaTronco();
+			break;
+		case 5:
+			desenhaBracoEsq();
+			break;
+		case 4:
+			desenhaBracoDir();
+			break;
+		case 3:
+			desenhaPernaEsq();
+			break;
+		case 2:
+			desenhaPernaDir();
+			break;
+		case 1:
+			desenhaCabecaComX();			
+			break;
+		
+	}
+}
+
+// desenha oportunidades no canvas
+var acessaCanvas = document.getElementById("forca").getContext("2d");
+
+function desenhaCabeca(){
+	acessaCanvas.beginPath();
+	acessaCanvas.arc(60, 40, 20, 0, 2 * Math.PI);
+	acessaCanvas.stroke();
+	
+}
+
+function desenhaTronco(){
+	acessaCanvas.moveTo(60, 60);
+	acessaCanvas.lineTo(60, 120);
+	acessaCanvas.stroke();
+}
+
+function desenhaBracoEsq(){
+	acessaCanvas.moveTo(60, 60);
+	acessaCanvas.lineTo(40, 90);
+	acessaCanvas.stroke();
+}
+
+function desenhaBracoDir(){
+	acessaCanvas.moveTo(60, 60);
+	acessaCanvas.lineTo(80, 90);
+	acessaCanvas.stroke();
+}
+
+function desenhaPernaEsq(){
+	acessaCanvas.moveTo(60, 120);
+	acessaCanvas.lineTo(40, 150);
+	acessaCanvas.stroke();
+}
+
+function desenhaPernaDir(){
+	acessaCanvas.moveTo(60, 120);
+	acessaCanvas.lineTo(80, 150);
+	acessaCanvas.stroke();
+}
+
+function desenhaCabecaComX(){	
+	acessaCanvas.filltyle = "red";
+	acessaCanvas.beginPath();
+	acessaCanvas.arc(60, 40, 20, 0, 2 * Math.PI);
+	acessaCanvas.fill();
+	mensagemDerrota();
+}
+
+function mensagemDerrota(){
+	alert ("VOCÊ PERDEU, TENTE NOVAMENTE")
+	location.reload();	
+}
+
+function mensagemVitoria(){
+	alert ("VOCÊ GANHOU! PARABÉNS")
+	location.reload();	
+	
+}
+

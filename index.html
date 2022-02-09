@@ -16,11 +16,16 @@
       <input class="text-input" type="text" id="input-nova-palavra" placeholder="Escreva uma nova palavra">
       <button class="btn" id="nova-palavra">Adicionar Palavra</button> 
     </div>
-    <div class="container" style="text-align:center; margin: 50px 0px;">
+    <div class="container" style="text-align: center; margin: 50px 0px;">
 	<div id="palavra-secreta">
     </div>		
+	</div>				
+	<div style="text-align: center; margin: 0px 0px">
+		<canvas id="forca" height="200px" width="500px"></canvas>
+	</div>
+
 	<div id="teclado">
-	<div class="teclas" style="text-align:center; margin: 50px 0px;">
+	<div class="teclas" style="text-align:center; margin: 10px 0px;">
 		<button id="letra-Q" onclick="verificarLetraEscolhida('Q')">Q</button>
 		<button id="letra-W" onclick="verificarLetraEscolhida('W')">W</button>
 		<button id="letra-E" onclick="verificarLetraEscolhida('E')">E</button>
@@ -31,7 +36,7 @@
 		<button id="letra-I" onclick="verificarLetraEscolhida('I')">I</button>
 		<button id="letra-O" onclick="verificarLetraEscolhida('O')">O</button>
 		<button id="letra-P" onclick="verificarLetraEscolhida('P')">P</button>
-	<div class="teclas" style="text-align:center; margin: 10px 0px;">
+	<div class="teclas" style="text-align:center; margin: 5px 0px;">
 		<button id="letra-A" onclick="verificarLetraEscolhida('A')">A</button>
 		<button id="letra-S" onclick="verificarLetraEscolhida('S')">S</button>
 		<button id="letra-D" onclick="verificarLetraEscolhida('D')">D</button>
@@ -42,18 +47,17 @@
 		<button id="letra-K" onclick="verificarLetraEscolhida('K')">K</button>
 		<button id="letra-L" onclick="verificarLetraEscolhida('L')">L</button>
 		<button id="letra-Ç" onclick="verificarLetraEscolhida('Ç')">Ç</button>
-	<div class="teclas" style="text-align:center; margin: 10px 0px;">		
+	<div class="teclas" style="text-align:center; margin: 5px 0px;">		
 		<button id="letra-Z" onclick="verificarLetraEscolhida('Z')">Z</button>
 		<button id="letra-X" onclick="verificarLetraEscolhida('X')">X</button>
 		<button id="letra-C" onclick="verificarLetraEscolhida('C')">C</button>
 		<button id="letra-V" onclick="verificarLetraEscolhida('V')">V</button>
 		<button id="letra-B" onclick="verificarLetraEscolhida('B')">B</button>
 		<button id="letra-N" onclick="verificarLetraEscolhida('N')">N</button>
-		<button id="letra-M" onclick="verificarLetraEscolhida('M')">M</button>	
-	</div>				
-    <div style="text-align:center;">
-    <canvas id="forca" height="300px" width="1200px"></canvas>
-    </div>
+		<button id="letra-M" onclick="verificarLetraEscolhida('M')">M</button>		
+	<div style="text-align:left; margin: 0px 0px">
+		<canvas height="150px" width="1200px"></canvas>
+	</div>
 	<footer class="footer">
 		<div class="main" style="text-align:center">
 			<div class="content">
@@ -64,7 +68,7 @@
 		  </div>
 	  </footer>     
     
-    <!-- <script type="text/javascript" src="canvas.js"></script> -->
+    <script type="text/javascript" src="canvas.js"></script>
     <script type="text/javascript" src="forca.js"></script>
   </body>
 </html>
