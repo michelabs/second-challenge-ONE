@@ -2,7 +2,7 @@ let tentativas = 7;
 let palavraSecretaSorteada;	
 let listaDinamica = [];
 
-let palavras = ["BRASIL", "ARGENTINA", "CHILE", "BOLIVIA", "VENEZUELA"];
+let palavras = ["BRASIL", "ARGENTINA", "COLOMBIA", "PERU", "CHILE", "EQUADOR", "BOLIVIA", "VENEZUELA", "GUIANA", "URUGUAI", "PARAGUARI", "SURININAME"];
 
 // inicia o jogo sorteando uma palavra secreta
 iniciaJogo();
@@ -10,7 +10,8 @@ function iniciaJogo(){
 	document.getElementById("iniciar-jogo").addEventListener("click", function(event){
 	event.preventDefault;	
 	criarPalavraSecreta();
-	montarPalavraNaTela();	
+	montarPalavraNaTela();
+	informaDica();	
 	});
 }
 
@@ -18,7 +19,7 @@ function iniciaJogo(){
 function criarPalavraSecreta(){
 	const indexPalavra = parseInt(Math.random() * palavras.length);	
 	this.palavraSecretaSorteada = palavras[indexPalavra];	
-	console.log(this.palavraSecretaSorteada);	
+	//console.log(this.palavraSecretaSorteada);	
 }
 
 // monta a quantidade de traços na tela
@@ -55,16 +56,13 @@ function mudarStyleLetra(tecla){
 // método para comparação entre a palavra secreta, e o array temporário armazenado na lista dinâmica
 function compararListas(letra){		
 	const posicao = this.palavraSecretaSorteada.indexOf(letra);
-	console.log(posicao);
-	console.log(this.palavraSecretaSorteada);
-	console.log(this.palavraSecretaSorteada.length);
+	//console.log(posicao);
+	//console.log(this.palavraSecretaSorteada);
+	//console.log(this.palavraSecretaSorteada.length);
 		if(posicao < 0){
 			tentativas--;
-			console.log(tentativas);
-			desenhaCorpo(tentativas);
-			if(tentativas == 0) {								
-				
-			}
+			//console.log(tentativas);
+			desenhaCorpo(tentativas);			
 		} else {
 			for (i = 0; i < this.palavraSecretaSorteada.length; i++) {	
 				if (this.palavraSecretaSorteada[i] == letra){
@@ -81,29 +79,12 @@ function compararListas(letra){
 	}
 
 	if (vitoria == true){
-		mensagemVitoria()
-	 location.reload();	
+		mensagemVitoria();	 
 	}
 }
 
-// método para inserir palavras
-adicionaPalavraNoArray();
-function adicionaPalavraNoArray(){
-	document.getElementById("nova-palavra").addEventListener("click", function(){	
-	identificaNovaPalavra();
-	});
-}
-
-// método para identifica nova palavra
-function identificaNovaPalavra(){
-	var novaPalavra = document.getElementById("input-nova-palavra").value;
-	if(novaPalavra != ""){
-	palavras.push(novaPalavra);
-	console.log(novaPalavra);
-	console.log(palavras);
-	document.getElementById("input-nova-palavra").value = "";
-	}  else alert ("Digite uma palavra válida!");
-}
+// desenha oportunidades no canvas
+var acessaCanvas = document.getElementById("forca").getContext("2d");
 
 function desenhaCorpo(tentativas){
 	switch(tentativas){
@@ -124,20 +105,17 @@ function desenhaCorpo(tentativas){
 			desenhaPernaDir();
 			break;
 		case 1:
-			desenhaCabecaComX();			
+			desenhaCabecaComX();		
+			mensagemDerrota();	
 			break;
 		
 	}
 }
 
-// desenha oportunidades no canvas
-var acessaCanvas = document.getElementById("forca").getContext("2d");
-
 function desenhaCabeca(){
 	acessaCanvas.beginPath();
 	acessaCanvas.arc(60, 40, 20, 0, 2 * Math.PI);
-	acessaCanvas.stroke();
-	
+	acessaCanvas.stroke();	
 }
 
 function desenhaTronco(){
@@ -171,21 +149,52 @@ function desenhaPernaDir(){
 }
 
 function desenhaCabecaComX(){	
-	acessaCanvas.filltyle = "red";
+	acessaCanvas.fillStyle = "red";
 	acessaCanvas.beginPath();
 	acessaCanvas.arc(60, 40, 20, 0, 2 * Math.PI);
 	acessaCanvas.fill();
-	mensagemDerrota();
+	
+}
+
+function informaDica(){
+	acessaCanvas.font ="20px Georgia";
+	acessaCanvas.fillStyle ="black"
+	acessaCanvas.fillText("A dica é: país", 200, 50);
 }
 
 function mensagemDerrota(){
-	alert ("VOCÊ PERDEU, TENTE NOVAMENTE! A PALAVRA CORRETA ERA: " + this.palavraSecretaSorteada);
-	location.reload();	
+	acessaCanvas.font="20px Georgia";
+	acessaCanvas.fillStyle ="red"
+	acessaCanvas.fillText("VOCÊ PERDEU!", 200, 100);
+	acessaCanvas.fillText("A PALAVRA CORRETA ERA:", 200, 130); 
+	acessaCanvas.fillText(this.palavraSecretaSorteada, 200, 160)	
 }
 
 function mensagemVitoria(){
-	alert ("VOCÊ GANHOU! PARABÉNS! A PALAVRA CORRETA ERA: " + this.palavraSecretaSorteada);
-	location.reload();	
+	acessaCanvas.font="20px Georgia";
+	acessaCanvas.fillStyle ="green"
+	acessaCanvas.fillText("PARABÉNS, VOCÊ ACERTOU!", 200, 100);	
 	
+}
+
+// funcões para inserir novas palavras dentro do jogo para possível seleção
+
+// método para inserir palavras
+adicionaPalavraNoArray();
+function adicionaPalavraNoArray(){
+	document.getElementById("nova-palavra").addEventListener("click", function(){	
+	identificaNovaPalavra();
+	});
+}
+
+// método para identifica nova palavra
+function identificaNovaPalavra(){
+	var novaPalavra = document.getElementById("input-nova-palavra").value;
+	if(novaPalavra != ""){
+	palavras.push(novaPalavra);
+	//console.log(novaPalavra);
+	//console.log(palavras);
+	document.getElementById("input-nova-palavra").value = "";
+	}  else alert ("Digite uma palavra válida!");
 }
 
